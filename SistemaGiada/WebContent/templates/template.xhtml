@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -20,21 +20,46 @@
 
 
 	<p:layout fullPage="true">
-	
-		<p:layoutUnit position="north" header="Sistema Agua e Gas" resizable="false" closable="false" collapsible="false">
-		</p:layoutUnit>
-		
-		<p:layoutUnit position="south" header="Desenvolvido por Gargel" resizable="false" closable="false" collapsible="false">
+
+		<p:layoutUnit position="north" header="Sistema Agua e Gas"
+			resizable="false" closable="false" collapsible="false">
 		</p:layoutUnit>
 
-		<p:layoutUnit position="west" resizable="false" closable="false" collapsible="false" size="250">
-			
+		<p:layoutUnit position="south" header="Desenvolvido por Gargel"
+			resizable="false" closable="false" collapsible="false">
 		</p:layoutUnit>
 
-		<p:layoutUnit position="center" resizable="false" closable="false" collapsible="false">
+		<p:layoutUnit position="west" resizable="false" closable="false"
+			collapsible="false" size="250">
+			<h:form>
+				<p:panelMenu>
+					<p:submenu label="Arquivo">
+						<p:menuitem value="Principal"></p:menuitem>
+						<p:menuitem value="Sair"></p:menuitem>
+					</p:submenu>
+					
+					<p:submenu label="Cadastros">
+						<p:menuitem value="Produtos"></p:menuitem>
+						<p:menuitem value="Fornecedores"></p:menuitem>
+						<p:menuitem value="Sair"></p:menuitem>
+					</p:submenu>
+					
+					<p:submenu label="Vendas">
+
+					</p:submenu>
+					
+					<p:submenu label="Ajuda">
+
+					</p:submenu>
+				</p:panelMenu>
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center" resizable="false" closable="false"
+			collapsible="false">
 			<ui:insert name="conteudo" />
 		</p:layoutUnit>
-		
+
 	</p:layout>
 </h:body>
 </html>
