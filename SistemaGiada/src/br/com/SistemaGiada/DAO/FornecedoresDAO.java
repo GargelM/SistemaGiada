@@ -37,7 +37,7 @@ public class FornecedoresDAO {
 		List<Fornecedor> fornecedores = null;
 		try {
 
-			Query consulta = sessao.createQuery("Fornecedor.listar");
+			Query consulta = sessao.getNamedQuery("Fornecedor.listar");
 			fornecedores = consulta.list();
 
 		} catch (RuntimeException e) {
@@ -47,4 +47,6 @@ public class FornecedoresDAO {
 		}
 		return fornecedores;
 	}
+	
+	
 }

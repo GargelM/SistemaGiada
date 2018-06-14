@@ -11,7 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_fornecedores")
-@NamedQueries({ @NamedQuery(name = "Fornecedor.listar", query = "SELEXT fornecedor FROM Fornecedor fornecedor") })
+@NamedQueries({ @NamedQuery(name = "Fornecedor.listar", query = "SELECT fornecedor FROM Fornecedor fornecedor"),
+		@NamedQuery(name = "Fornecedor.buscarPorCodigo", query = "SELECT fornecedor FROM Fornecedor fornecedor WHERE fornecedor.codigo = :codigo") })
 public class Fornecedor {
 
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,6 +37,11 @@ public class Fornecedor {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	@Override
+	public String toString() {
+		return "Fornecedor [codigo=" + codigo + ", descricao=" + descricao + "]";
 	}
 
 }
