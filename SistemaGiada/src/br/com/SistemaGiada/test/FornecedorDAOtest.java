@@ -32,7 +32,7 @@ public class FornecedorDAOtest {
 	}
 
 	@Test
-	
+	@Ignore
 	public void buscarPorCodigo() {
 		FornecedoresDAO fdao = new FornecedoresDAO();
 		Fornecedor f1 = fdao.buscarPorCodigo(2L);
@@ -43,5 +43,16 @@ public class FornecedorDAOtest {
 		System.out.println(f2);
 		System.out.println(f3);
 
+	}
+
+	@Test
+	public void excluir() {
+		FornecedoresDAO fdao = new FornecedoresDAO();
+
+		Fornecedor fornecedor = fdao.buscarPorCodigo(2L);
+
+		if (fornecedor != null) {
+			fdao.excluir(fornecedor);
+		}
 	}
 }

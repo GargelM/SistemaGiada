@@ -64,4 +64,24 @@ public class FornecedoresDAO {
 		}
 		return fornecedor;
 	}
+	
+	public void excluir(Fornecedor fornecedor) {
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transacao = null;
+		try {
+			transacao = sessao.beginTransaction();// abrindo a transacao
+			sessao.delete(fornecedor);
+			transacao.commit(); // confirmando a transação
+
+		} catch (RuntimeException e) {
+			if (transacao != null) {
+				transacao.rollback(); // desfaz a transação
+
+			}
+		} finally {
+			sessao.close();
+		}
+
+	}
 }
