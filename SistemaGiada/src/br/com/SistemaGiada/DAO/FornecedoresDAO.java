@@ -10,6 +10,7 @@ import br.com.SistemaGiada.domain.Fornecedor;
 import br.com.SistemaGiada.util.HibernateUtil;
 
 public class FornecedoresDAO {
+	
 	public void salvar(Fornecedor fornecedor) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();// iniciando a sessao conexao criada exemplo
 																			// fabrica..
@@ -84,4 +85,48 @@ public class FornecedoresDAO {
 		}
 
 	}
+	
+	public void excluir(Long codigo) {
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transacao = null;
+		try {
+			transacao = sessao.beginTransaction();// abrindo a transacao
+			Fornecedor fornecedor = buscarPorCodigo(codigo);
+			sessao.delete(fornecedor);
+			transacao.commit(); // confirmando a transação
+
+		} catch (RuntimeException e) {
+			if (transacao != null) {
+				transacao.rollback(); // desfaz a transação
+
+			}
+		} finally {
+			sessao.close();
+		}
+
+	}
+	
+	public void Editar(Fornecedor fornecedor) {
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		
+		Transaction transacao = null;
+		try {
+			transacao = sessao.beginTransaction();
+			Fornecedor fornecedorEditar = buscarPorCodigo(fornecedor.getCodigo());
+			fornecedorEditar.setDescricao(fornecedor.getDescricao());
+			sessao.update(fornecedor);
+			transacao.commit(); 
+
+		} catch (RuntimeException e) {
+			if (transacao != null) {
+				transacao.rollback(); // desfaz a transação
+
+			}
+		} finally {
+			sessao.close();
+		}
+
+	}
+	
 }

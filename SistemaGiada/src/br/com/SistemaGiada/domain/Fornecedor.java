@@ -18,16 +18,16 @@ public class Fornecedor {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	@Column(name = "for_codigo")
-	private Integer codigo;
+	private Long codigo;
 
 	@Column(name = "for_descricao", length = 50, nullable = false)
 	private String descricao;
 
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 

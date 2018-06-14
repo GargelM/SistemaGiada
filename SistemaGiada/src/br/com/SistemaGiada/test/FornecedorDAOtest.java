@@ -46,6 +46,7 @@ public class FornecedorDAOtest {
 	}
 
 	@Test
+	@Ignore
 	public void excluir() {
 		FornecedoresDAO fdao = new FornecedoresDAO();
 
@@ -54,5 +55,11 @@ public class FornecedorDAOtest {
 		if (fornecedor != null) {
 			fdao.excluir(fornecedor);
 		}
+	}
+
+	@Test
+	public void excluirPorCodigo() {
+		FornecedoresDAO fdao = new FornecedoresDAO();
+		fdao.excluir(4L);
 	}
 }
