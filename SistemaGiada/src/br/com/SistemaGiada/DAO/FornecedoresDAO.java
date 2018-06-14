@@ -48,5 +48,20 @@ public class FornecedoresDAO {
 		return fornecedores;
 	}
 	
-	
+	public Fornecedor buscarPorCodigo(Long codigo) {
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		Fornecedor fornecedor = null;
+		try {
+
+			Query consulta = sessao.getNamedQuery("Fornecedor.buscarPorCodigo");
+			consulta.setLong("codigo", codigo);
+			fornecedor = (Fornecedor) consulta.uniqueResult();//buscar por valor unico
+
+		} catch (RuntimeException e) {
+				throw e;
+		} finally {
+			sessao.close();
+		}
+		return fornecedor;
+	}
 }
