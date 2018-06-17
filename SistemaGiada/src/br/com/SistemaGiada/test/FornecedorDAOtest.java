@@ -14,7 +14,7 @@ public class FornecedorDAOtest {
 	@Ignore
 	public void salvar() {
 		Fornecedor f1 = new Fornecedor();
-		f1.setDescricao("Gargel");
+		f1.setDescricao("teste1d");
 
 		FornecedoresDAO fdao = new FornecedoresDAO();
 		fdao.salvar(f1);
@@ -50,16 +50,30 @@ public class FornecedorDAOtest {
 	public void excluir() {
 		FornecedoresDAO fdao = new FornecedoresDAO();
 
-		Fornecedor fornecedor = fdao.buscarPorCodigo(2L);
+		Fornecedor fornecedor = fdao.buscarPorCodigo(7L);
 
-		if (fornecedor != null) {
-			fdao.excluir(fornecedor);
-		}
+		fdao.excluir(fornecedor);
+
 	}
+
+	/*
+	 * @Test
+	 * 
+	 * @Ignore public void excluirPorCodigo() { FornecedoresDAO fdao = new
+	 * FornecedoresDAO(); fdao.excluir(4L); }
+	 * 
+	 */
 
 	@Test
-	public void excluirPorCodigo() {
+	
+	public void editar() {
+
 		FornecedoresDAO fdao = new FornecedoresDAO();
-		fdao.excluir(4L);
+
+		Fornecedor fornecedor = fdao.buscarPorCodigo(7L);
+		fornecedor.setDescricao("TESTE");
+
+		fdao.editar(fornecedor);
 	}
+
 }

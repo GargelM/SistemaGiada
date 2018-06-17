@@ -49,6 +49,7 @@ public class FornecedoresDAO {
 		return fornecedores;
 	}
 	
+	
 	public Fornecedor buscarPorCodigo(Long codigo) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Fornecedor fornecedor = null;
@@ -86,6 +87,7 @@ public class FornecedoresDAO {
 
 	}
 	
+	/*
 	public void excluir(Long codigo) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 
@@ -106,8 +108,9 @@ public class FornecedoresDAO {
 		}
 
 	}
+	*/
 	
-	public void Editar(Fornecedor fornecedor) {
+	public void editar(Fornecedor fornecedor) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		
 		Transaction transacao = null;
@@ -115,7 +118,7 @@ public class FornecedoresDAO {
 			transacao = sessao.beginTransaction();
 			Fornecedor fornecedorEditar = buscarPorCodigo(fornecedor.getCodigo());
 			fornecedorEditar.setDescricao(fornecedor.getDescricao());
-			sessao.update(fornecedor);
+			sessao.update(fornecedorEditar);
 			transacao.commit(); 
 
 		} catch (RuntimeException e) {
