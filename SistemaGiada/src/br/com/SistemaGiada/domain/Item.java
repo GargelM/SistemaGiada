@@ -19,7 +19,7 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	@Column(name="ite_codigo")
-	private Integer codigo;
+	private Long codigo;
 	
 	@Column(name="ite_quantidade", nullable=false)
 	private Integer quantidade;
@@ -35,11 +35,11 @@ public class Item {
 	@JoinColumn(name="tb_vendas_ven_codigo", referencedColumnName="ven_codigo", nullable=false)
 	private Venda venda;
 
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 

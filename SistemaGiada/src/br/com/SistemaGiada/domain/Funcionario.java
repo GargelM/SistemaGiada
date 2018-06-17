@@ -5,16 +5,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_funcionarios")
+@NamedQueries({ @NamedQuery(name = "Funcionario.listar", query = "SELECT funcionario FROM Funcionario funcionario"),
+		@NamedQuery(name = "Funcionario.buscarPorCodigo", query = "SELECT funcionario FROM Funcionario funcionario WHERE funcionario.codigo = :codigo") })
 public class Funcionario {
 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	@Column(name = "fun_codigo")
-	private Integer codigo;
+	private Long codigo;
 
 	@Column(name = "fun_nome", length = 45, nullable = false)
 	private String nome;
@@ -28,11 +32,11 @@ public class Funcionario {
 	@Column(name = "fun_funcao", length = 50, nullable = false)
 	private String funcao;
 
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 

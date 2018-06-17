@@ -25,7 +25,7 @@ public class Venda {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
 	@Column(name="ven_codigo")
-	private Integer codigo;
+	private Long codigo;
 	
 	@Temporal(value=TemporalType.TIMESTAMP)
 	@Column(name="ven_horario", nullable=false)
@@ -38,11 +38,11 @@ public class Venda {
 	@JoinColumn(name="tb_funcionarios_fun_codigo", referencedColumnName="fun_codigo", nullable=false)
 	private Funcionario funcionario;
 
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 
