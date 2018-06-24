@@ -4,19 +4,17 @@ import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
-
-import br.com.SistemaGiada.DAO.FornecedoresDAO;
 import br.com.SistemaGiada.DAO.FuncionariosDAO;
-import br.com.SistemaGiada.domain.Fornecedor;
 import br.com.SistemaGiada.domain.Funcionario;
 
 public class FuncionarioDAOtest {
 	@Test
+	@Ignore
 	public void salvar() {
 		Funcionario f1 = new Funcionario();
 	
 		f1.setNome("MGARGEL");
-		f1.setCpf("111.111.111.10");
+		f1.setCpf("111.111.111.00");
 		f1.setSenha("123454");
 		f1.setFuncao("SUBGERENTE");
 		
@@ -27,11 +25,11 @@ public class FuncionarioDAOtest {
 	@Test
 	@Ignore
 	public void listar() {
-		FornecedoresDAO fdao = new FornecedoresDAO();
-		List<Fornecedor> fornecedores = fdao.listar();
+		FuncionariosDAO fdao = new FuncionariosDAO();
+		List<Funcionario> funcionarios = fdao.listar();
 
-		for (Fornecedor fornecedor : fornecedores) {
-			System.out.println(fornecedor);
+		for (Funcionario funcionario : funcionarios) {
+			System.out.println(funcionario);
 		}
 	}
 	
@@ -40,33 +38,33 @@ public class FuncionarioDAOtest {
 	@Test
 	@Ignore
 	public void buscarPorCodigo() {
-		FornecedoresDAO fdao = new FornecedoresDAO();
-		Fornecedor f1 = fdao.buscarPorCodigo(2L);
-		Fornecedor f2 = fdao.buscarPorCodigo(3L);
-		Fornecedor f3 = fdao.buscarPorCodigo(5L);
+		FuncionariosDAO fdao = new FuncionariosDAO();
+		Funcionario f1 = fdao.buscarPorCodigo(1L);
+		//Funcionario f2 = fdao.buscarPorCodigo(3L);
+		//Funcionario f3 = fdao.buscarPorCodigo(5L);
 
 		System.out.println(f1);
-		System.out.println(f2);
-		System.out.println(f3);
+		//System.out.println(f2);
+		//System.out.println(f3);
 
 	}
 
 	@Test
 	@Ignore
 	public void excluir() {
-		FornecedoresDAO fdao = new FornecedoresDAO();
+		FuncionariosDAO fdao = new FuncionariosDAO();
 
-		Fornecedor fornecedor = fdao.buscarPorCodigo(7L);
+		Funcionario funcionario = fdao.buscarPorCodigo(4L);
 
-		fdao.excluir(fornecedor);
+		fdao.excluir(funcionario);
 
 	}
 
 	/*
 	 * @Test
 	 * 
-	 * @Ignore public void excluirPorCodigo() { FornecedoresDAO fdao = new
-	 * FornecedoresDAO(); fdao.excluir(4L); }
+	 * @Ignore public void excluirPorCodigo() { FuncionarioDAO fdao = new
+	 * FuncionarioDAO(); fdao.excluir(4L); }
 	 * 
 	 */
 
@@ -74,12 +72,12 @@ public class FuncionarioDAOtest {
 	@Ignore
 	public void editar() {
 
-		FornecedoresDAO fdao = new FornecedoresDAO();
+		FuncionariosDAO fdao = new FuncionariosDAO();		
 
-		Fornecedor fornecedor = fdao.buscarPorCodigo(7L);
-		fornecedor.setDescricao("TESTE");
+		Funcionario funcionario = fdao.buscarPorCodigo(3L);
+		funcionario.setNome("MICHEL");
 
-		fdao.editar(fornecedor);
+		fdao.editar(funcionario);
 	}
 
 }
