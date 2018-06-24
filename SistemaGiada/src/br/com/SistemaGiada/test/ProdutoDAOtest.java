@@ -59,15 +59,15 @@ public class ProdutoDAOtest {
 	@Ignore
 	public void excluir() {
 		ProdutosDAO pdao = new ProdutosDAO();
-		
+
 		Produto produto = pdao.buscarPorCodigo(2L);
 
 		pdao.excluir(produto);
 
 	}
-	
+
 	@Test
-	
+	@Ignore
 	public void editar() {
 
 		FornecedoresDAO fdao = new FornecedoresDAO();
