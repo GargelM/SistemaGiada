@@ -76,8 +76,9 @@ public class FuncionarioDAOtest {
 
 		Funcionario funcionario = fdao.buscarPorCodigo(3L);
 		funcionario.setNome("MICHEL");
-
-		fdao.editar(funcionario);
+		//funcionario.setCpf("111.111.111.00");
+		//funcionario.setSenha("123454");
+		//funcionario.setFuncao("SUBGERENTE");
 	}
 
 }
