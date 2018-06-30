@@ -74,10 +74,10 @@ public class ProdutoDAOtest {
 		Fornecedor fornecedor = fdao.buscarPorCodigo(5L);
 
 		ProdutosDAO pdao = new ProdutosDAO();
-		Produto produto = pdao.buscarPorCodigo(4L);
-		produto.setDescricao("Gas");
-		produto.setQuantidade(69);
-		produto.setValor(new BigDecimal(8.99D));
+		Produto produto = pdao.buscarPorCodigo(1L);
+		produto.setDescricao("teste1");
+		produto.setQuantidade(690);
+		produto.setValor(new BigDecimal(80.99D));
 		produto.setFornecedor(fornecedor);
 
 		pdao.editar(produto);

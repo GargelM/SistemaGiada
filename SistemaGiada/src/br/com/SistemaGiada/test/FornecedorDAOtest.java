@@ -65,7 +65,7 @@ public class FornecedorDAOtest {
 	 */
 
 	@Test
-	
+	@Ignore
 	public void editar() {
 
 		FornecedoresDAO fdao = new FornecedoresDAO();

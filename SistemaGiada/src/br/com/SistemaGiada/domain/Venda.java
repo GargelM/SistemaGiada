@@ -10,16 +10,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import java.util.Date;
 
-import org.hibernate.type.TimestampType;
+//import org.hibernate.type.TimestampType;
 
 @Entity
 @Table(name = "tb_vendas")
+@NamedQueries({ @NamedQuery(name = "Venda.listar", query = "SELECT venda FROM Produto venda"),
+	@NamedQuery(name = "Venda.buscarPorCodigo", query = "SELECT venda FROM Venda venda WHERE venda.codigo = :codigo") })
+
 public class Venda {
 	
 	@GeneratedValue(strategy=GenerationType.AUTO)
