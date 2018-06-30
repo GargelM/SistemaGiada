@@ -18,12 +18,22 @@
 				<p:outputLabel value="Descrição" />
 				<p:inputText maxlength="50" size="30" />
 				<p:button value="Buscar" />
-				<p:button value="Novo" outcome="/pages/fornecedorCadastro.xhtml" />
+				<p:button value="Novo" outcome="/faces/pages/fornecedorCadastro.xhtml" />
 			</h:panelGrid>
 
-			<p:dataTable emptyMessage="Nenhum Registro Cadastrado">
-				<p:column headerText="Código"></p:column>
-				<p:column headerText="Descrição"></p:column>
+			<p:dataTable emptyMessage="Nenhum Registro Cadastrado"
+				value="#{MBFornecedores.itens}"
+				filteredValue="#{MFFornecedores.itensFiltrados}" var="fornecedor">
+
+				<p:column headerText="Código">
+					<h:outputText value="#{fornecedor.codigo}" />
+				</p:column>
+
+				<p:column headerText="Descrição"
+					filterBy="#{fornecedor.descricao}"
+					sortBy="#{fornecedor.descricao}">
+					<h:outputText value="#{fornecedor.descricao}" />
+				</p:column>
 				<p:column headerText="Opções"></p:column>
 			</p:dataTable>
 
