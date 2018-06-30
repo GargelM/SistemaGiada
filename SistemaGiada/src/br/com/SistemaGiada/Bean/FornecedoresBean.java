@@ -1,7 +1,7 @@
 //fazer comunicaçao parte web com banco de dados. java vx xhtml
 package br.com.SistemaGiada.Bean;
 
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
@@ -20,14 +20,16 @@ public class FornecedoresBean {
 //	private ArrayList<Fornecedor>itens;
 //	private ArrayList<Fornecedor>itensFiltrados;
 	
-//	public Fornecedor getFornecedores() {
-//		return fornecedores;
-//	}
-//
-//	public void setFornecedores(Fornecedor fornecedores) {
-//		this.fornecedores = fornecedores;
-//	}
-//	
+	public Fornecedor getFornecedores() {
+		if(fornecedores == null)
+			fornecedores = new Fornecedor();
+		return fornecedores;
+	}
+
+	public void setFornecedores(Fornecedor fornecedores) {
+		this.fornecedores = fornecedores;
+	}
+	
 //	public ArrayList<Fornecedor> getItens() {
 //		return itens;
 //	}
@@ -67,18 +69,19 @@ public class FornecedoresBean {
 //	
 	public void salvar() {
 		
-//		try {
-//			FornecedoresDAO fdao = new FornecedoresDAO();
-//			fdao.salvar(fornecedores);
+		try {
+			FornecedoresDAO fdao = new FornecedoresDAO();
+			fdao.salvar(fornecedores);
 			
+			fornecedores = new Fornecedor();
 			//itens = fdao.listar();//atualizar a pagina
 			
 			JSFUtil.adicionarMensagemSucesso("Salvo com sucesso");
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			JSFUtil.adicionarMensagemErro("ex.getMessage()");
-//			e.printStackTrace();
-//		}
+		} catch (RuntimeException e) {
+			// TODO Auto-generated catch block
+			JSFUtil.adicionarMensagemErro("ex.getMessage()");
+			e.printStackTrace();
+		}
 	}
 
 //	
