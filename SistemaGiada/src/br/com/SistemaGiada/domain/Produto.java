@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_produtos")
 @NamedQueries({ @NamedQuery(name = "Produto.listar", query = "SELECT produto FROM Produto produto"),
-	@NamedQuery(name = "Produto.buscarPorCodigo", query = "SELECT produto FROM Produto produto WHERE produto.codigo = :codigo") })
+		@NamedQuery(name = "Produto.buscarPorCodigo", query = "SELECT produto FROM Produto produto WHERE produto.codigo = :codigo") })
 
 public class Produto {
 
@@ -35,7 +35,7 @@ public class Produto {
 	@Column(name = "pro_quantidade", nullable = false)
 	private Integer quantidade;
 
-	 // quando carregar o produtos e fornecedor vira junto
+	// quando carregar o produtos e fornecedor vira junto
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tb_fornecedores_for_codigo", referencedColumnName = "for_codigo", nullable = false)
 	private Fornecedor fornecedor;

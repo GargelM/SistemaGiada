@@ -10,7 +10,7 @@ import br.com.SistemaGiada.domain.Fornecedor;
 import br.com.SistemaGiada.util.HibernateUtil;
 
 public class FornecedoresDAO {
-	
+
 	public void salvar(Fornecedor fornecedor) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();// iniciando a sessao conexao criada exemplo
 																			// fabrica..
@@ -32,7 +32,7 @@ public class FornecedoresDAO {
 
 	}
 
-	@SuppressWarnings("unchecked")//se n encontrar nada 
+	@SuppressWarnings("unchecked") // se n encontrar nada
 	public List<Fornecedor> listar() {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		List<Fornecedor> fornecedores = null;
@@ -42,14 +42,13 @@ public class FornecedoresDAO {
 			fornecedores = consulta.list();
 
 		} catch (RuntimeException e) {
-				throw e;
+			throw e;
 		} finally {
 			sessao.close();
 		}
 		return fornecedores;
 	}
-	
-	
+
 	public Fornecedor buscarPorCodigo(Long codigo) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Fornecedor fornecedor = null;
@@ -57,16 +56,16 @@ public class FornecedoresDAO {
 
 			Query consulta = sessao.getNamedQuery("Fornecedor.buscarPorCodigo");
 			consulta.setLong("codigo", codigo);
-			fornecedor = (Fornecedor) consulta.uniqueResult();//buscar por valor unico
+			fornecedor = (Fornecedor) consulta.uniqueResult();// buscar por valor unico
 
 		} catch (RuntimeException e) {
-				throw e;
+			throw e;
 		} finally {
 			sessao.close();
 		}
 		return fornecedor;
 	}
-	
+
 	public void excluir(Fornecedor fornecedor) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 
@@ -86,40 +85,33 @@ public class FornecedoresDAO {
 		}
 
 	}
-	
+
 	/*
-	public void excluir(Long codigo) {
-		Session sessao = HibernateUtil.getSessionFactory().openSession();
+	 * public void excluir(Long codigo) { Session sessao =
+	 * HibernateUtil.getSessionFactory().openSession();
+	 * 
+	 * Transaction transacao = null; try { transacao = sessao.beginTransaction();//
+	 * abrindo a transacao Fornecedor fornecedor = buscarPorCodigo(codigo);
+	 * sessao.delete(fornecedor); transacao.commit(); // confirmando a transação
+	 * 
+	 * } catch (RuntimeException e) { if (transacao != null) { transacao.rollback();
+	 * // desfaz a transação
+	 * 
+	 * } } finally { sessao.close(); }
+	 * 
+	 * }
+	 */
 
-		Transaction transacao = null;
-		try {
-			transacao = sessao.beginTransaction();// abrindo a transacao
-			Fornecedor fornecedor = buscarPorCodigo(codigo);
-			sessao.delete(fornecedor);
-			transacao.commit(); // confirmando a transação
-
-		} catch (RuntimeException e) {
-			if (transacao != null) {
-				transacao.rollback(); // desfaz a transação
-
-			}
-		} finally {
-			sessao.close();
-		}
-
-	}
-	*/
-	
 	public void editar(Fornecedor fornecedor) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
-		
+
 		Transaction transacao = null;
 		try {
 			transacao = sessao.beginTransaction();
 			Fornecedor fornecedorEditar = buscarPorCodigo(fornecedor.getCodigo());
 			fornecedorEditar.setDescricao(fornecedor.getDescricao());
 			sessao.update(fornecedorEditar);
-			transacao.commit(); 
+			transacao.commit();
 
 		} catch (RuntimeException e) {
 			if (transacao != null) {
@@ -131,5 +123,5 @@ public class FornecedoresDAO {
 		}
 
 	}
-	
+
 }

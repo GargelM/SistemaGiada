@@ -4,10 +4,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-
 import org.junit.Ignore;
 import org.junit.Test;
-
 
 import br.com.SistemaGiada.DAO.FuncionariosDAO;
 import br.com.SistemaGiada.DAO.VendasDAO;
@@ -32,7 +30,6 @@ public class VendaDAOtest {
 		vdao.salvar(v1);
 	}
 
-	
 	@Test
 	@Ignore
 	public void listar() {
@@ -42,7 +39,7 @@ public class VendaDAOtest {
 		System.out.println(venda);
 
 	}
-	
+
 	@Test
 	@Ignore
 	public void buscarPorCodigo() {
@@ -56,7 +53,7 @@ public class VendaDAOtest {
 		System.out.println(v3);
 
 	}
-	
+
 	@Test
 	@Ignore
 	public void excluir() {
@@ -67,7 +64,7 @@ public class VendaDAOtest {
 		vdao.excluir(venda);
 
 	}
-	
+
 	@Test
 	@Ignore
 	public void editar() {
@@ -77,11 +74,13 @@ public class VendaDAOtest {
 
 		VendasDAO vdao = new VendasDAO();
 		Venda venda = vdao.buscarPorCodigo(2L);
-		venda.setHorario(new Date());;
+		venda.setHorario(new Date());
+		;
 		venda.setValor_total(new BigDecimal(1.99D));
-		venda.setFuncionario(funcionario);;
+		venda.setFuncionario(funcionario);
+		;
 
 		vdao.editar(venda);
 	}
-	
+
 }

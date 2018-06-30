@@ -23,30 +23,30 @@ import java.util.Date;
 @Entity
 @Table(name = "tb_vendas")
 @NamedQueries({ @NamedQuery(name = "Venda.listar", query = "SELECT venda FROM Venda venda"),
-	@NamedQuery(name = "Venda.buscarPorCodigo", query = "SELECT venda FROM Venda venda WHERE venda.codigo = :codigo") })
+		@NamedQuery(name = "Venda.buscarPorCodigo", query = "SELECT venda FROM Venda venda WHERE venda.codigo = :codigo") })
 
 public class Venda {
-	
+
 	@Override
 	public String toString() {
 		return "Venda [codigo=" + codigo + ", horario=" + horario + ", valor_total=" + valor_total + ", funcionario="
 				+ funcionario + "]";
 	}
 
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
-	@Column(name="ven_codigo")
+	@Column(name = "ven_codigo")
 	private Long codigo;
-	
-	@Temporal(value=TemporalType.TIMESTAMP)
-	@Column(name="ven_horario", nullable=false)
+
+	@Temporal(value = TemporalType.TIMESTAMP)
+	@Column(name = "ven_horario", nullable = false)
 	private Date horario;
-	
-	@Column(name="ven_valor_total", nullable=false, scale=2, precision=7)
+
+	@Column(name = "ven_valor_total", nullable = false, scale = 2, precision = 7)
 	private BigDecimal valor_total;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="tb_funcionarios_fun_codigo", referencedColumnName="fun_codigo", nullable=false)
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "tb_funcionarios_fun_codigo", referencedColumnName = "fun_codigo", nullable = false)
 	private Funcionario funcionario;
 
 	public Long getCodigo() {
@@ -81,5 +81,4 @@ public class Venda {
 		this.funcionario = funcionario;
 	}
 
-	
 }

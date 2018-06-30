@@ -77,6 +77,5 @@ public class Funcionario {
 		return "Funcionario [codigo=" + codigo + ", nome=" + nome + ", cpf=" + cpf + ", senha=" + senha + ", funcao="
 				+ funcao + "]";
 	}
-	
 
 }
