@@ -7,19 +7,37 @@
 	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
 
 	<ui:define name="conteudo">
-
 		<h:form>
 			<p:toolbar>
 				<f:facet name="left">
-					<h:outputText value="Fornecedores" />
+					<h:outputText value="Funcionários" />
 				</f:facet>
 			</p:toolbar>
-			<h:panelGrid columns="4">
-				<p:outputLabel value="Descrição" />
+
+			<h:panelGrid columns="8">
+				<p:outputLabel value="Código" />
+				<p:inputText maxlength="20" size="10" />
+				<p:outputLabel value="Nome:" />
 				<p:inputText maxlength="50" size="30" />
-				<p:button value="Buscar" />
-				<p:button value="Novo" outcome="/pages/fornecedorCadastro.xhtml" />
+				<p:outputLabel value="CPF:" />
+				<p:inputMask mask="999.999.999-99" maxlength="50" size="15" />
+				<p:outputLabel value="Senha" />
+				<p:password maxlength="8" size="30" />
+				<p:outputLabel value="Cargo" />
+				<p:selectOneMenu>
+					<f:selectItem itemLabel="Selecione um cargo" />
+					<f:selectItem itemLabel="Administrador" />
+					<f:selectItem itemLabel="Gerente" />
+					<f:selectItem itemLabel="Funcionario" />
+				</p:selectOneMenu>
 			</h:panelGrid>
+
+			<h:panelGrid columns="3">
+				<p:button value="Novo" />
+				<p:button value="Salvar" />
+				<p:button value="Voltar" outcome="/pages/funcionarioPesquisa.xhtml" />
+			</h:panelGrid>
+
 
 			<p:dataTable emptyMessage="Nenhum Registro Cadastrado">
 				<p:column headerText="Código"></p:column>
@@ -28,7 +46,6 @@
 			</p:dataTable>
 
 		</h:form>
-
 	</ui:define>
 
 </ui:composition>

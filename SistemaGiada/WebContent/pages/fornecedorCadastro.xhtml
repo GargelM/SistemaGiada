@@ -4,13 +4,37 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	template="/templates/template.xhtml">
-	
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+
 	<ui:define name="conteudo">
-		<h:outputLabel>
-			Cadastro Fabricante
-		</h:outputLabel>
+		<h:form>
+			<p:toolbar>
+				<f:facet name="left">
+					<h:outputText value="Fornecedores" />
+				</f:facet>
+			</p:toolbar>
+			
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Código" />
+				<p:inputText maxlength="20" size="10" />
+				<p:outputLabel value="Descrção" />
+				<p:inputText maxlength="50" size="30" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="3">
+				<p:button value="Novo" />
+				<p:commandButton value="Salvar" actionListener="#{MBFornecedores.salvar}" update=":msgGlobal" />
+				<p:button value="Voltar" outcome="/pages/fornecedorPesquisa.xhtml" />
+			</h:panelGrid>
+			
+			
+			<p:dataTable emptyMessage="Nenhum Registro Cadastrado">
+				<p:column headerText="Código"></p:column>
+				<p:column headerText="Descrição"></p:column>
+				<p:column headerText="Opções"></p:column>
+			</p:dataTable>
+
+		</h:form>
 	</ui:define>
 
 </ui:composition>
