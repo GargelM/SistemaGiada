@@ -22,11 +22,17 @@ import java.util.Date;
 
 @Entity
 @Table(name = "tb_vendas")
-@NamedQueries({ @NamedQuery(name = "Venda.listar", query = "SELECT venda FROM Produto venda"),
+@NamedQueries({ @NamedQuery(name = "Venda.listar", query = "SELECT venda FROM Venda venda"),
 	@NamedQuery(name = "Venda.buscarPorCodigo", query = "SELECT venda FROM Venda venda WHERE venda.codigo = :codigo") })
 
 public class Venda {
 	
+	@Override
+	public String toString() {
+		return "Venda [codigo=" + codigo + ", horario=" + horario + ", valor_total=" + valor_total + ", funcionario="
+				+ funcionario + "]";
+	}
+
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
 	@Column(name="ven_codigo")
