@@ -9,6 +9,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name = "tb_fornecedores")
 @NamedQueries({ @NamedQuery(name = "Fornecedor.listar", query = "SELECT fornecedor FROM Fornecedor fornecedor"),
@@ -20,6 +22,7 @@ public class Fornecedor {
 	@Column(name = "for_codigo")
 	private Long codigo;
 
+	@NotEmpty(message = "Insira a Descrição")
 	@Column(name = "for_descricao", length = 50, nullable = false)
 	private String descricao;
 

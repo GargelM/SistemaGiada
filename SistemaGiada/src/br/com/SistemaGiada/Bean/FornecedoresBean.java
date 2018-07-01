@@ -19,8 +19,18 @@ public class FornecedoresBean {
 	private ArrayList<Fornecedor> itens;
 	private ArrayList<Fornecedor> itensFiltrados;
 	private String acao;
+	private Long codigo;
 	
 	
+	
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
 
 	public String getAcao() {
 		return acao;
@@ -54,6 +64,9 @@ public class FornecedoresBean {
 		this.itensFiltrados = itensFiltrados;
 	}
 
+	
+	
+	
 	// ira construir o q esta abaixo assim q a pagina for iniciada
 	// @PostConstruct
 	public void prepararPesquisa() {
@@ -73,13 +86,8 @@ public class FornecedoresBean {
 	public void carregarCadastro() {
 		try {
 			
-			acao = JSFUtil.getParam("foracao");
-			
-			String valor = JSFUtil.getParam("forcod");
-			if (valor != null) {
-				Long codigo = Long.parseLong(valor);
+			if (codigo != null) {
 				FornecedoresDAO fdao = new FornecedoresDAO();
-
 				fornecedores = fdao.buscarPorCodigo(codigo);
 			}else {
 				fornecedores = new Fornecedor();

@@ -14,9 +14,6 @@
 	</ui:define>
 	<ui:define name="conteudo">
 
-		<f:event listener="#{MBFornecedores.prepararPesquisa}"
-			type="preRenderView" />
-
 		<h:form>
 			<p:toolbar>
 				<f:facet name="left">
@@ -28,9 +25,9 @@
 				<p:inputText maxlength="50" size="30" />
 				<p:button value="Buscar" />
 				<p:button value="Novo"
-					outcome="/faces/pages/fornecedorCadastro.xhtml">
+					outcome="/pages/fornecedorCadastro.xhtml">
 					<f:param name="foracao" value="Novo" />
-					</p:button>
+				</p:button>
 			</h:panelGrid>
 
 			<p:dataTable emptyMessage="Nenhum Registro Cadastrado"
@@ -49,12 +46,12 @@
 
 				<p:column headerText="Opções">
 					<p:button icon="ui-icon-pencil"
-						outcome="/faces/pages/fornecedorCadastro.xhtml">
+						outcome="/pages/fornecedorCadastro.xhtml">
 						<f:param name="forcod" value="#{fornecedor.codigo}" />
 						<f:param name="foracao" value="Editar" />
 					</p:button>
 					<p:button icon="ui-icon-trash"
-						outcome="/faces/pages/fornecedorCadastro.xhtml">
+						outcome="/pages/fornecedorCadastro.xhtml">
 						<f:param name="forcod" value="#{fornecedor.codigo}" />
 						<f:param name="foracao" value="Excluir" />
 					</p:button>
