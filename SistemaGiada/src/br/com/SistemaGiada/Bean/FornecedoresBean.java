@@ -112,19 +112,16 @@ public class FornecedoresBean {
 		}
 	}
 
-	//
-	//
-	// public void editar() {
-	// try {
-	// FornecedoresDAO fdao = new FornecedoresDAO();
-	// fdao.editar(fornecedores);
-	//
-	// itens = fdao.listar();
-	// JSFUtil.adicionarMensagemSucesso("Fornecedor editado com sucesso");
-	// } catch (SQLException e) {
-	// // TODO: handle exception
-	// JSFUtil.adicionarMensagemErro("ex.getMessage()");
-	// e.printStackTrace();
-	// }
-	// }
+	public void editar() {
+		try {
+			FornecedoresDAO fdao = new FornecedoresDAO();
+			fdao.editar(fornecedores);
+
+			JSFUtil.adicionarMensagemSucesso("Fornecedor editado com sucesso");
+		} catch (RuntimeException e) {
+			// TODO: handle exception
+			JSFUtil.adicionarMensagemErro("ex.getMessage()");
+			e.printStackTrace();
+		}
+	}
 }
