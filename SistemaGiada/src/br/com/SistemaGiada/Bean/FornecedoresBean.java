@@ -3,7 +3,6 @@ package br.com.SistemaGiada.Bean;
 
 import java.util.ArrayList;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -47,7 +46,7 @@ public class FornecedoresBean {
 	}
 
 	// ira construir o q esta abaixo assim q a pagina for iniciada
-	@PostConstruct
+	//@PostConstruct
 	public void prepararPesquisa() {
 
 		try {
@@ -73,7 +72,7 @@ public class FornecedoresBean {
 			fdao.salvar(fornecedores);
 
 			fornecedores = new Fornecedor();
-			// itens = fdao.listar();//atualizar a pagina
+			itens = (ArrayList<Fornecedor>) fdao.listar();//atualizar a pagina
 
 			JSFUtil.adicionarMensagemSucesso("Salvo com sucesso");
 		} catch (RuntimeException e) {

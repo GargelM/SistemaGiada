@@ -8,6 +8,8 @@
 
 	<ui:define name="conteudo">
 
+<f:event listener="#{MBFornecedores.prepararPesquisa}" type="preRenderView" />
+
 		<h:form>
 			<p:toolbar>
 				<f:facet name="left">
@@ -23,7 +25,7 @@
 
 			<p:dataTable emptyMessage="Nenhum Registro Cadastrado"
 				value="#{MBFornecedores.itens}"
-				filteredValue="#{MFFornecedores.itensFiltrados}" var="fornecedor">
+				filteredValue="#{MBFornecedores.itensFiltrados}" var="fornecedor">
 
 				<p:column headerText="Código">
 					<h:outputText value="#{fornecedor.codigo}" />
