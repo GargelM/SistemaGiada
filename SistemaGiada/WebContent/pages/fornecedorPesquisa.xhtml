@@ -12,42 +12,52 @@
 				type="preRenderView" />
 		</f:metadata>
 	</ui:define>
-	<ui:define name="conteudo" >
+	<ui:define name="conteudo">
 
-	<f:event listener="#{MBFornecedores.prepararPesquisa}"
-		type="preRenderView" />
+		<f:event listener="#{MBFornecedores.prepararPesquisa}"
+			type="preRenderView" />
 
-	<h:form>
-		<p:toolbar>
-			<f:facet name="left">
-				<h:outputText value="Fornecedores" />
-			</f:facet>
-		</p:toolbar>
-		<h:panelGrid columns="4">
-			<p:outputLabel value="Descrição" />
-			<p:inputText maxlength="50" size="30" />
-			<p:button value="Buscar" />
-			<p:button value="Novo"
-				outcome="/faces/pages/fornecedorCadastro.xhtml" />
-		</h:panelGrid>
+		<h:form>
+			<p:toolbar>
+				<f:facet name="left">
+					<h:outputText value="Fornecedores" />
+				</f:facet>
+			</p:toolbar>
+			<h:panelGrid columns="4">
+				<p:outputLabel value="Descrição" />
+				<p:inputText maxlength="50" size="30" />
+				<p:button value="Buscar" />
+				<p:button value="Novo"
+					outcome="/faces/pages/fornecedorCadastro.xhtml" />
+			</h:panelGrid>
 
-		<p:dataTable emptyMessage="Nenhum Registro Cadastrado"
-			value="#{MBFornecedores.itens}"
-			filteredValue="#{MBFornecedores.itensFiltrados}" var="fornecedor"
-			rows="10" paginator="true">
+			<p:dataTable emptyMessage="Nenhum Registro Cadastrado"
+				value="#{MBFornecedores.itens}"
+				filteredValue="#{MBFornecedores.itensFiltrados}" var="fornecedor"
+				rows="10" paginator="true">
 
-			<p:column headerText="Código">
-				<h:outputText value="#{fornecedor.codigo}" />
-			</p:column>
+				<p:column headerText="Código">
+					<h:outputText value="#{fornecedor.codigo}" />
+				</p:column>
 
-			<p:column headerText="Descrição" filterBy="#{fornecedor.descricao}"
-				sortBy="#{fornecedor.descricao}">
-				<h:outputText value="#{fornecedor.descricao}" />
-			</p:column>
-			<p:column headerText="Opções"></p:column>
-		</p:dataTable>
+				<p:column headerText="Descrição" filterBy="#{fornecedor.descricao}"
+					sortBy="#{fornecedor.descricao}">
+					<h:outputText value="#{fornecedor.descricao}" />
+				</p:column>
 
-	</h:form>
+				<p:column headerText="Opções">
+					<p:button icon="ui-icon-pencil"
+						outcome="/faces/pages/fornecedorCadastro.xhtml">
+						<f:param name="forcod" value="#{fornecedor.codigo}" />
+					</p:button>
+					<p:button icon="ui-icon-trash"
+						outcome="/faces/pages/fornecedorCadastro.xhtml">
+						<f:param name="forcod" value="#{fornecedor.codigo}" />
+					</p:button>
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
 
 	</ui:define>
 

@@ -46,7 +46,7 @@ public class FornecedoresBean {
 	}
 
 	// ira construir o q esta abaixo assim q a pagina for iniciada
-	//@PostConstruct
+	// @PostConstruct
 	public void prepararPesquisa() {
 
 		try {
@@ -61,6 +61,23 @@ public class FornecedoresBean {
 
 	}
 
+	public void carregarCadastro() {
+		try {
+			String valor = JSFUtil.getParam("forcod");
+			if (valor != null) {
+				Long codigo = Long.parseLong(valor);
+				FornecedoresDAO fdao = new FornecedoresDAO();
+
+				fornecedores = fdao.buscarPorCodigo(codigo);
+			}
+
+		} catch (RuntimeException e) {
+			// TODO Auto-generated catch block
+			JSFUtil.adicionarMensagemErro("ex.getMessage()");
+			e.printStackTrace();
+		}
+	}
+
 	public void novo() {
 		fornecedores = new Fornecedor();
 	}
@@ -72,7 +89,7 @@ public class FornecedoresBean {
 			fdao.salvar(fornecedores);
 
 			fornecedores = new Fornecedor();
-			itens = (ArrayList<Fornecedor>) fdao.listar();//atualizar a pagina
+			// itens = (ArrayList<Fornecedor>) fdao.listar();//atualizar a pagina
 
 			JSFUtil.adicionarMensagemSucesso("Salvo com sucesso");
 		} catch (RuntimeException e) {
@@ -82,22 +99,19 @@ public class FornecedoresBean {
 		}
 	}
 
-	//
-	// public void excluir() {
-	// try {
-	// FornecedoresDAO fdao = new FornecedoresDAO();
-	// fdao.excluir(fornecedores);
-	//
-	// itens = fdao.listar();//atualizar a pagina
-	// JSFUtil.adicionarMensagemSucesso("Fornecedor excluido com sucesso");
-	// } catch (SQLException e) {
-	// // TODO Auto-generated catch block
-	// JSFUtil.adicionarMensagemErro("Não é possivel excluir um fornecedor que
-	// tenha um produto associado!");
-	// e.printStackTrace();
-	// }
-	// }
-	//
+	public void excluir() {
+		try {
+			FornecedoresDAO fdao = new FornecedoresDAO();
+			fdao.excluir(fornecedores);
+
+			JSFUtil.adicionarMensagemSucesso("Fornecedor excluido com sucesso");
+		} catch (RuntimeException e) {
+			// TODO Auto-generated catch block
+			JSFUtil.adicionarMensagemErro("N�o foi possivel excluir um fornecedor que tenha um produto associado!");
+			e.printStackTrace();
+		}
+	}
+
 	//
 	//
 	// public void editar() {
