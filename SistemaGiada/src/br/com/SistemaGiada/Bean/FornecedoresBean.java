@@ -20,8 +20,6 @@ public class FornecedoresBean {
 	private ArrayList<Fornecedor> itensFiltrados;
 
 	public Fornecedor getFornecedores() {
-		if (fornecedores == null)
-			fornecedores = new Fornecedor();
 		return fornecedores;
 	}
 
@@ -69,6 +67,8 @@ public class FornecedoresBean {
 				FornecedoresDAO fdao = new FornecedoresDAO();
 
 				fornecedores = fdao.buscarPorCodigo(codigo);
+			}else {
+				fornecedores = new Fornecedor();
 			}
 
 		} catch (RuntimeException e) {
