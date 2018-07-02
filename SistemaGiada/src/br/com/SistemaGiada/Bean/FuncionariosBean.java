@@ -119,10 +119,10 @@ public class FuncionariosBean {
 			FuncionariosDAO fdao = new FuncionariosDAO();
 			fdao.excluir(funcionario);
 
-			JSFUtil.adicionarMensagemSucesso("Fornecedor excluido com sucesso");
+			JSFUtil.adicionarMensagemSucesso("funcionario excluido com sucesso");
 		} catch (RuntimeException e) {
 			// TODO Auto-generated catch block
-			JSFUtil.adicionarMensagemErro("Não foi possivel excluir um fornecedor que tenha um produto associado!");
+			JSFUtil.adicionarMensagemErro("Não foi possivel excluir um funcionario que tenha uma venda associado!");
 			e.printStackTrace();
 		}
 	}
@@ -132,7 +132,7 @@ public class FuncionariosBean {
 			FuncionariosDAO fdao = new FuncionariosDAO();
 			fdao.editar(funcionario);
 
-			JSFUtil.adicionarMensagemSucesso("Fornecedor editado com sucesso");
+			JSFUtil.adicionarMensagemSucesso("funcionario editado com sucesso");
 		} catch (RuntimeException e) {
 			// TODO: handle exception
 			JSFUtil.adicionarMensagemErro("ex.getMessage()");
